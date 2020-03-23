@@ -1,0 +1,42 @@
+<div>
+    <form class="was-validated" (ngSubmit)="guardarArticulo( formularioArticulo)" #formularioArticulo="ngForm">
+        <div class="form-group">
+            <label class="col-form-label">Código Articulo</label>
+            <input type="string" class="form-control" name="codigo" minlength="3" maxlength="3" required [(ngModel)]=articulo.codigo #codigo="ngModel">
+
+        </div>
+        <div class="form-group">
+            <label class="col-form-label">Modelo Articulo</label>
+            <input type="string" class="form-control" name="modelo" required [(ngModel)]=articulo.modelo #modelo="ngModel">
+
+        </div>
+        <div class="form-group">
+            <label class="col-form-label">Tipo Articulo</label>
+            <input type="string" class="form-control" name="tipo" required [(ngModel)]=articulo.tipo #tipo="ngModel">
+
+        </div>
+        <div class="form-group">
+            <label class="col-form-label">Año Articulo</label>
+            <input type="number" class="form-control" name="anio" required [(ngModel)]=articulo.anio #anio="ngModel">
+
+        </div>
+
+        <div class="form-group">
+            <label class="col-form-label">Marca Articulo</label>
+            <select type="string" class="custom-select" name="marca" required [(ngModel)]=articulo.marca #marca="ngModel">
+                 <option>Elegir una marca</option>
+                 <option *ngFor="let proveedor of listaProveedores" >{{proveedor.nombre}}</option>
+             </select>
+
+        </div>
+
+        <div class="form-group">
+            <label class="col-form-label"></label>
+            <button [disabled]="!formularioArticulo.valid" type="submit" class="btn btn-outline-dark">Guardar</button>
+            <button [disabled]="!formularioArticulo.valid" type="button" (click)="eliminarArticulo()" class="btn btn-outline-danger">Eliminar Proveedor</button>
+
+        </div>
+
+
+    </form>
+</div>

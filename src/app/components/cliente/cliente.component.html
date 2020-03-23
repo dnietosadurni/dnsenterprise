@@ -1,0 +1,39 @@
+<div>
+    <form class="was-validated" (ngSubmit)="guardarCliente( formularioCliente)" #formularioCliente="ngForm">
+        <div class="form-group">
+            <label class="col-form-label">Código Cliente</label>
+            <input type="text" class="form-control" placeholder="Este codigo se genera automaticamente" name="codigo" [(ngModel)]="cliente.codigo" #codigo="ngModel" disabled>
+
+        </div>
+        <div class="form-group">
+            <label class="col-form-label">Nombre Cliente</label>
+            <input type="text" class="form-control" name="nombre" required [(ngModel)]=cliente.nombre #nombre="ngModel">
+
+        </div>
+        <div class="form-group">
+            <label class="col-form-label">Pais Cliente</label>
+            <input type="text" class="form-control" name="pais" required [(ngModel)]=cliente.pais #pais="ngModel">
+
+        </div>
+        <div class="form-group">
+            <label class="col-form-label">Email Cliente</label>
+            <input type="email" class="form-control" name="email" required pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" [(ngModel)]=cliente.email #email="ngModel">
+            <div *ngIf=email.errors?.required>
+                <small>Este campo es obligatorio</small>
+            </div>
+            <div *ngIf=email.errors?.pattern>
+                <small>Este formato de correo no es válido</small>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="col-form-label"></label>
+            <button [disabled]="!formularioCliente.valid" type="submit" class="btn btn-outline-dark">Guardar</button>
+            <button [disabled]="!formularioCliente.valid" type="button" (click)="eliminarCliente( cliente )" class="btn btn-outline-danger">Eliminar Cliente</button>
+
+        </div>
+
+
+    </form>
+</div>

@@ -1,0 +1,41 @@
+<!-- Botón de alta-->
+
+<button class="btn btn-block btn-outline-dark mb-5" (click)="onClickOnAlta()">
+  Alta proveedor
+</button>
+
+<!-- Modal para el alta -->
+
+<div *ngIf="isShowingModal">
+    <app-modal-alta (isShowingModal)="onClickOnCerrar( $event )"></app-modal-alta>
+</div>
+
+<!-- Modal para editar  -->
+
+<div *ngIf="isShowingModalEditar">
+    <app-modal-editar [proveedor]="usuario" [i]="indice" [proveedores]="proveedores" (isShowingModalEditar)="onClickOnCerrarEditar( $event )"></app-modal-editar>
+</div>
+
+
+<!-- Lista de proveedores -->
+
+<table class="table table-hover ">
+    <thead class="thead-dark ">
+        <tr>
+            <th scope="col ">Codigo</th>
+            <th scope="col ">Nombre</th>
+            <th scope="col ">Pais</th>
+            <th scope="col ">Correo</th>
+            <th scope=" "></th>
+        </tr>
+    </thead>
+    <tbody *ngFor=" let proveedor of proveedores; let i = index ">
+        <tr>
+            <th scope="row ">{{proveedor.codigo}}</th>
+            <td>{{proveedor.nombre}}</td>
+            <td>{{proveedor.pais}}</td>
+            <td>{{proveedor.correo}}</td>
+            <button class=" btn btn-dark btn-outline-light mt-1 " (click)="escogerProveedor( proveedor, i )">Editar</button>
+        </tr>
+    </tbody>
+</table>

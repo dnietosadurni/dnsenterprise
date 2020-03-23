@@ -1,0 +1,30 @@
+<!-- Botón de alta -->
+
+<button routerLink="altas" class="btn btn-block btn-outline-dark mb-5">Alta
+  Artículo</button>
+
+
+<!-- Lista de proveedores -->
+
+<table class="table table-hover ">
+    <thead class="thead-dark ">
+        <tr>
+            <th scope="col ">Codigo</th>
+            <th scope="col ">Modelo</th>
+            <th scope="col ">Tipo</th>
+            <th scope="col ">Año</th>
+            <th scope="col ">Marca</th>
+            <th scope=" "></th>
+        </tr>
+    </thead>
+    <tbody *ngFor=" let articulo of articulos; let i = index ">
+        <tr>
+            <th scope="row ">{{articulo.codigo}}</th>
+            <td>{{articulo.modelo}}</td>
+            <td>{{articulo.tipo}}</td>
+            <td>{{articulo.anio}}</td>
+            <td>{{articulo.marca}}</td>
+            <button [routerLink]="['editar', articulo.codigo]" class=" btn btn-dark btn-outline-light mt-1">Editar</button>
+        </tr>
+    </tbody>
+</table>
